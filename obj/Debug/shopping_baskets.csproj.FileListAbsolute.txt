@@ -1,0 +1,5 @@
+/Users/matteofilopanti/Projects/shopping_baskets/shopping_baskets/bin/Debug/shopping_baskets.exe
+/Users/matteofilopanti/Projects/shopping_baskets/shopping_baskets/bin/Debug/shopping_baskets.pdb
+/Users/matteofilopanti/Projects/shopping_baskets/shopping_baskets/obj/Debug/shopping_baskets.csprojAssemblyReference.cache
+/Users/matteofilopanti/Projects/shopping_baskets/shopping_baskets/obj/Debug/shopping_baskets.exe
+/Users/matteofilopanti/Projects/shopping_baskets/shopping_baskets/obj/Debug/shopping_baskets.pdb
