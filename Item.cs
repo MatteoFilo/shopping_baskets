@@ -32,7 +32,10 @@ namespace shopping_baskets
                     ret = qty * price * 1.05;
                 }
             }
-            ret = Math.Round(ret,2);
+            ret = System.Math.Round(ret,1, MidpointRounding.AwayFromZero)+0.05;
+          
+
+
             return ret;   
         }
 
