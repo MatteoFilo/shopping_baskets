@@ -11,17 +11,17 @@ namespace shopping_baskets
 
         public double Calcola()
         {
-            double ret = qty * price;
+            double ret = System.Math.Round(qty * price, 2, MidpointRounding.AwayFromZero);
             if (taxable)
             {
                 if (imported)
                 {
 
-                    ret = qty * price * 1.15;
+                    ret = ret * 1.15;
                 }
                 else
                 {
-                    ret = qty * price * 1.10;
+                    ret = ret * 1.10;
                 }
             }
             else
@@ -29,13 +29,10 @@ namespace shopping_baskets
                 if (imported)
                 {
 
-                    ret = qty * price * 1.05;
+                    ret = ret * 1.05;
                 }
             }
-            ret = System.Math.Round(ret,1, MidpointRounding.AwayFromZero)+0.05;
-          
-
-
+            ret = System.Math.Round(ret, 2, MidpointRounding.AwayFromZero);
             return ret;   
         }
 
