@@ -3,31 +3,36 @@ namespace shopping_baskets
 {
     public class Item
     {
-        int qty;
-        string name;
-        bool taxable;
-        bool imported;
-        float price;
+        public int qty;
+        public string name;
+        public bool taxable;
+        public bool imported;
+        public float price;
 
         public double Calcola()
         {
-            double ret;
+            double ret = qty * price;
             if (taxable)
             {
                 if (imported)
                 {
 
-                    ret = price * 1.15;
+                    ret = qty * price * 1.15;
                 }
                 else
                 {
-                    ret = price * 1.10;
+                    ret = qty * price * 1.10;
                 }
             }
             else
             {
-                ret = price * 1.05;
+                if (imported)
+                {
+
+                    ret = qty * price * 1.05;
+                }
             }
+            ret = Math.Round(ret,2);
             return ret;   
         }
 

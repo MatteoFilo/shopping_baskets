@@ -8,33 +8,73 @@ namespace shopping_baskets
         public static void Main(string[] args)
         {
             string row;
-            ArrayList valore = new ArrayList();
+            ArrayList Rows = new ArrayList();
             Console.WriteLine("Insert your shopping basket:");
-            do
+            row = "";
+            row = Console.ReadLine();
+            while (row != string.Empty)
             {
-                row = Console.ReadLine();
-                Item itemRow = ReadString(row);
-                valore.Add(itemRow); 
-            } while (!String.IsNullOrWhiteSpace(row));
-
-            foreach (Item val in valore)
-                {
-                Console.WriteLine(val);
+                Item itemrow = ReadString(row);
+                Rows.Add(itemrow);
+                row = "";
+                try
+                    {
+                    row = Console.ReadLine();
+                }
+                catch(EntryPointNotFoundException e)
+                { }
             }
-            
+            float total = 0;
+            foreach (Item val in Rows)
+                {
+                total = total + val.price;
+                Console.WriteLine(val.qty + " " + val.name + ": " + val.price);
+            }
+            Console.WriteLine("Total: " + total);
 
         }
 
         private static Item ReadString(string row)
         {
 
-            Item RowItem = new Item();
+            Item rowItem = new Item();
 
-            String[] elements = System.Text.RegularExpressions.Regex.Split(row, " ");
-            foreach (var element in elements)
-                if(element)
+            int position = row.IndexOf(' ');
 
-            return RowItem;
+            rowItem.qty = Int32.Parse(row.Substring(0, position++));
+            row = row.Substring(position);
+
+            int positionNew = row.IndexOf(' ');
+            position = 0;
+
+            if ((row.IndexOf("imported") != -1))
+            {
+                rowItem.imported = true;
+                position = positionNew;
+                row = row.Substring(position++);
+                position = 0;
+            }
+            else
+            {
+                rowItem.imported = false;
+            }
+            if (row.IndexOf("chocolate") != -1 || row.IndexOf("pill") != -1 || row.IndexOf("book") != -1)
+            {
+                rowItem.taxable = false;
+            }
+            else
+            {
+                rowItem.taxable = true;
+            }
+            positionNew = row.IndexOf(" at ");
+            rowItem.name = row.Substring(position, positionNew);
+            row = row.Substring(positionNew+3);
+
+            rowItem.price = float.Parse(row.Replace(".",","));
+
+
+            rowItem.price = (float)rowItem.Calcola();
+            return rowItem;
         }
     }
 }
