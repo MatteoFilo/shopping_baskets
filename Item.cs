@@ -8,6 +8,7 @@ namespace shopping_baskets
         public bool taxable;
         public bool imported;
         public float price;
+        public float tax;
 
         public double Calcola()
         {
@@ -33,6 +34,7 @@ namespace shopping_baskets
                 }
             }
             ret = System.Math.Round(ret, 2, MidpointRounding.AwayFromZero);
+
             return ret;   
         }
 
